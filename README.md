@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="docs/assets/cover.png" alt="Capa do Projeto" width="100%" height="700"/>
+  <img src="docs/assets/cover.png" alt="Capa do Projeto"/>
 </div>
 
 <br>
