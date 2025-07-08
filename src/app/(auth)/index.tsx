@@ -1,14 +1,29 @@
 import React from 'react'
-import { Link } from 'expo-router'
-import { Image, SafeAreaView, Text, View } from 'react-native'
+import { Link, useRouter } from 'expo-router'
+import { Image, Text, View, StyleSheet } from 'react-native'
 
 import ButtonNotes from '@/src/components/atoms/ButtonNotes'
+import SectionTitle from '@/src/components/atoms/SectionTitle'
+import PageTemplate from '@/src/components/template/PageTemplate'
+import TextField from '@/src/components/atoms/TextField'
+
+import { useForm } from "react-hook-form"
+
 
 const Login: React.FC = () => {
+  const { navigate } = useRouter()
+  const { control, handleSubmit } = useForm()
+
+  const onSubmit = (fieldValues: any) => {
+    console.log(fieldValues)
+    navigate('/(notes)/home')
+  }
 
 
   return (
-    <SafeAreaView style={{ flex: 1, padding: 20, paddingTop: 40, gap: 48, alignItems: 'center' }}>
+    <PageTemplate
+      style={{ gap: 48 }}
+    >
 
       <Image
         source={require('../../assets/login-cover.png')}
@@ -16,33 +31,65 @@ const Login: React.FC = () => {
         height={230}
       />
 
-      <View>
+      <View style={s.wrapper}>
+        <SectionTitle text='login' />
 
+        <TextField
+          label='Email'
+          formProps={{
+            name: 'email',
+            control: control
+          }}
+          textFieldAttributes={{
+            placeholder: 'Email do usuário'
+          }}
+        />
 
+        <TextField
+          label='Senha'
+          formProps={{
+            name: 'password',
+            control: control
+          }}
+          textFieldAttributes={{
+            placeholder: 'Senha do usuário'
+          }}
+        />
       </View>
 
+
+      <Link
+        href={'/(auth)/resetPassword'}
+        style={{ color: '#835ED6', fontWeight: '500' }}
+      >
+        Esqueceu a senha ?
+      </Link>
 
       <ButtonNotes
         text='Logar na sua conta'
+        onPress={handleSubmit(onSubmit)}
       />
 
-
-      <View />
-      <Text>Ou</Text>
-      <View />
-
-      <View>
-        {/* Botões de login alternativo */}
-      </View>
-
       <Text>
-        Não tem uma conta?
-        <Link href={'/(auth)/register'}>Faça login.</Link>
+        Não tem uma conta? {" "}
+        <Link
+          href={'/(auth)/register'}
+          style={{ color: '#835ED6', fontWeight: '500' }}
+        >
+          Faça login.
+        </Link>
       </Text>
 
 
-    </SafeAreaView>
+    </PageTemplate>
   )
 }
 
 export default Login
+
+const s = StyleSheet.create({
+  wrapper: {
+    width: '100%',
+    gap: 19,
+  },
+})
