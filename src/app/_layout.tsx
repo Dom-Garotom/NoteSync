@@ -1,26 +1,19 @@
-import { Stack, useRouter } from 'expo-router'
-import React, { useState } from 'react'
-
-
+import { Stack } from 'expo-router'
+import React from 'react'
+import AuthContextProvider from '../context/provider/authContextProvider'
 
 const RootLayout: React.FC = () => {
-    const { navigate } = useRouter()
-    const [isAuth, _] = useState(false)
-
-    if (isAuth === true) {
-        navigate('/(notes)/home')
-        return
-    }
-
     return (
-        <Stack
-            screenOptions={{
-                headerShown: false
-            }}
-        >
-            <Stack.Screen name='(auth)' />
-            <Stack.Screen name='(notes)' />
-        </Stack>
+        <AuthContextProvider>
+            <Stack
+                screenOptions={{
+                    headerShown: false
+                }}
+            >
+                <Stack.Screen name='(auth)' />
+                <Stack.Screen name='(notes)' />
+            </Stack>
+        </AuthContextProvider>
     )
 }
 

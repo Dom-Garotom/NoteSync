@@ -4,11 +4,11 @@ import { Redirect, Stack } from 'expo-router'
 import React, { useContext } from 'react'
 
 
-const AuthRoot: React.FC = () => {
+const NotesRoot: React.FC = () => {
     const { isAuth } = useContext(AuthContext)
 
-    if (isAuth) {
-        return <Redirect href={'/home'} />
+    if (!isAuth) {
+        return <Redirect href={'/(auth)'} />
     }
 
     return (
@@ -18,13 +18,10 @@ const AuthRoot: React.FC = () => {
                     headerShown: false
                 }}
             >
-                <Stack.Screen name='index' />
-                <Stack.Screen name='register' />
-                <Stack.Screen name='confirmCode' />
-                <Stack.Screen name='resetPassword' />
+                <Stack.Screen name='home' />
             </Stack>
         </AuthContextProvider>
     )
 }
 
-export default AuthRoot
+export default NotesRoot
