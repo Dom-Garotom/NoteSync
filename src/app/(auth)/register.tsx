@@ -38,7 +38,7 @@ const Register: React.FC = () => {
       />
 
       <View style={s.wrapper}>
-        <SectionTitle text='login' />
+        <SectionTitle text='Criar conta' />
 
         <TextField
           label='Nome'
@@ -84,7 +84,7 @@ const Register: React.FC = () => {
           }}
         />
         <ButtonNotes
-          text='Logar na sua conta'
+          text='Criar conta'
           onPress={handleSubmit(onSubmit)}
         />
       </View>

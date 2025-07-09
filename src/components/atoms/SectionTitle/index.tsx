@@ -8,7 +8,7 @@ interface SectionTitleProps {
 
 const SectionTitle: React.FC<SectionTitleProps> = ({ text }) => {
     return (
-        <Text style={StyledSectionTitle.title}>Login</Text>
+        <Text style={StyledSectionTitle.title}>{text}</Text>
     )
 }
 
