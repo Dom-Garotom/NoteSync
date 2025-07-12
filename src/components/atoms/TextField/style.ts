@@ -27,4 +27,8 @@ export const StyledTextField = StyleSheet.create({
     height: '100%',
     padding: 10,
   },
+
+  errorMessage:{
+    color: '#EF5350',
+  },
 })

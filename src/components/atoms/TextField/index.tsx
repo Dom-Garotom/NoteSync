@@ -7,26 +7,35 @@ interface TextFieldProps {
     formProps: UseControllerProps
     textFieldAttributes: TextInputProps
     label: string
+    errorMessage?: string
 }
 
 const TextField: React.FC<TextFieldProps> = ({
     textFieldAttributes,
     formProps,
-    label
+    label,
+    errorMessage
 }) => {
     return (
         <Controller
             {...formProps}
-            render={({ field }) => (
-                <View style={StyledTextField.wrapper}>
-                    <Text style={StyledTextField.label}>{label}</Text>
-                    <TextInput
-                        ref={field.ref}
-                        value={field.value}
-                        onChangeText={field.onChange}
-                        style={StyledTextField.input}
-                        {...textFieldAttributes}
-                    />
+            render={({ field, formState }) => (
+                <View>
+                    <View style={StyledTextField.wrapper}>
+                        <Text style={StyledTextField.label}>{label}</Text>
+                        <TextInput
+                            ref={field.ref}
+                            value={field.value}
+                            onChangeText={field.onChange}
+                            style={StyledTextField.input}
+                            {...textFieldAttributes}
+                        />
+                    </View>
+                    {errorMessage &&
+                        <Text style={StyledTextField.errorMessage}>
+                            *{errorMessage}
+                        </Text>
+                    }
                 </View>
             )}
 

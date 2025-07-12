@@ -18,10 +18,10 @@ const AuthRoot: React.FC = () => {
                     headerShown: false
                 }}
             >
-                <Stack.Screen name='index' />
-                <Stack.Screen name='register' />
-                <Stack.Screen name='confirmCode' />
-                <Stack.Screen name='resetPassword' />
+                <Stack.Screen name='Login/index' />
+                <Stack.Screen name='Register/index' />
+                <Stack.Screen name='ConfirmCode/index' />
+                <Stack.Screen name='ResetPassword/index' />
             </Stack>
         </AuthContextProvider>
     )
