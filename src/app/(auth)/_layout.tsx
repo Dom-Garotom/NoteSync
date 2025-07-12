@@ -1,5 +1,4 @@
 import { AuthContext } from '@/src/context/model/authContextModel'
-import AuthContextProvider from '@/src/context/provider/authContextProvider'
 import { Redirect, Stack } from 'expo-router'
 import React, { useContext } from 'react'
 
@@ -8,11 +7,10 @@ const AuthRoot: React.FC = () => {
     const { isAuth } = useContext(AuthContext)
 
     if (isAuth) {
-        return <Redirect href={'/home'} />
+        return <Redirect href={'/(notes)/Home'} />
     }
 
     return (
-        <AuthContextProvider>
             <Stack
                 screenOptions={{
                     headerShown: false
@@ -23,7 +21,6 @@ const AuthRoot: React.FC = () => {
                 <Stack.Screen name='ConfirmCode/index' />
                 <Stack.Screen name='ResetPassword/index' />
             </Stack>
-        </AuthContextProvider>
     )
 }
 

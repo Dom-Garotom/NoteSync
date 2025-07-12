@@ -24,10 +24,11 @@ const Login: React.FC = () => {
   const onSubmit = async (fieldValues: LoginSchemaType) => {
     try {
       const response = await authenticateUser(fieldValues)
+      console.log(response)
 
       if (response) {
         setAuth(response.userId)
-        navigate('/(notes)/home')
+        navigate('/(notes)/Home')
         return
       }
 
