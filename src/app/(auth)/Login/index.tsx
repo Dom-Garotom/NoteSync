@@ -27,7 +27,7 @@ const Login: React.FC = () => {
       console.log(response)
 
       if (response) {
-        setAuth(response.userId)
+        setAuth(response.id)
         navigate('/(notes)/Home')
         return
       }
@@ -74,7 +74,7 @@ const Login: React.FC = () => {
         </Text>
 
         <Link
-          href={'/(auth)/ressetPassword'}
+          href={'/(auth)/RessetPassword'}
           style={{ color: '#835ED6', fontWeight: '500' }}
         >
           Esqueceu a senha ?

@@ -9,10 +9,10 @@ const LoginSchema = z.object({
   )
 })
 
-type LoginSchemaType = z.infer<typeof LoginSchema>
 
+type LoginSchemaType = z.infer<typeof LoginSchema>
 
 export {
     LoginSchema,
-    type LoginSchemaType
+    type LoginSchemaType,
 }

@@ -1,25 +1,44 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useRouter } from 'expo-router'
-import { Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native'
-import { useForm } from "react-hook-form"
+import { FormProvider, useForm } from "react-hook-form"
+import { Image, Text, View, StyleSheet, TouchableOpacity, Alert } from 'react-native'
+import { RegisterUserSchema, RegisterUserType } from '@/src/types/schema/registerSchema'
+import { registerUser } from '@/src/services/models/userAuth'
 
 import { ArrowLeftFromLine } from 'lucide-react-native'
 import ButtonNotes from '@/src/components/atoms/ButtonNotes'
-import SectionTitle from '@/src/components/atoms/SectionTitle'
 import PageTemplate from '@/src/components/template/PageTemplate'
-import TextField from '@/src/components/atoms/TextField'
-
+import { zodResolver } from '@hookform/resolvers/zod'
+import RegisterFormSection from './section/registerFormSection'
+import { AuthContext } from '@/src/context/model/authContextModel'
 
 
 const Register: React.FC = () => {
+    const { setAuth } = useContext(AuthContext)
     const { navigate, back } = useRouter()
-    const { control, handleSubmit } = useForm()
+    const methods = useForm({
+        resolver: zodResolver(RegisterUserSchema)
+    })
 
-    const onSubmit = (fieldValues: any) => {
-        console.log(fieldValues)
-        // navigate('/(notes)/home')
+    const onSubmit = async (fieldValues: RegisterUserType) => {
+        try {
+            const response = await registerUser(fieldValues)
+            const registerResponse = response ? response : null
+
+            if (registerResponse?.id) {
+                setAuth(registerResponse.id)
+                navigate('/(notes)/Home')
+                return
+            }
+
+            Alert.alert('Credenciais inválidas. Tente novamente.')
+            return
+
+        } catch (error) {
+            console.error('Login error:', error)
+            Alert.alert('error', 'Erro ao autenticar. Tente novamente.')
+        }
     }
-
 
     return (
         <PageTemplate
@@ -38,56 +57,16 @@ const Register: React.FC = () => {
             />
 
             <View style={s.wrapper}>
-                <SectionTitle text='Criar conta' />
+                <FormProvider {...methods}>
+                    <RegisterFormSection />
+                </FormProvider>
 
-                <TextField
-                    label='Nome'
-                    formProps={{
-                        name: 'name',
-                        control: control
-                    }}
-                    textFieldAttributes={{
-                        placeholder: 'Nome do usuário'
-                    }}
-                />
-
-                <TextField
-                    label='Email'
-                    formProps={{
-                        name: 'email',
-                        control: control
-                    }}
-                    textFieldAttributes={{
-                        placeholder: 'Email do usuário'
-                    }}
-                />
-
-                <TextField
-                    label='Senha'
-                    formProps={{
-                        name: 'password',
-                        control: control
-                    }}
-                    textFieldAttributes={{
-                        placeholder: 'Senha do usuário'
-                    }}
-                />
-
-                <TextField
-                    label='Confirmar senha'
-                    formProps={{
-                        name: 'confrim-password',
-                        control: control
-                    }}
-                    textFieldAttributes={{
-                        placeholder: 'Confirme a senha do usuário'
-                    }}
-                />
                 <ButtonNotes
                     text='Criar conta'
-                    onPress={handleSubmit(onSubmit)}
+                    onPress={methods.handleSubmit(onSubmit)}
                 />
             </View>
+
 
             <Text>
                 Já tem uma conta cadastrada ?{" "}
