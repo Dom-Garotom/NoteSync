@@ -9,13 +9,12 @@ interface AuthContextProviderProps {
 const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ children }) => {
     const [id, setId] = useState<string>('')
     const [isAuth, setIsAuth] = useState<boolean>(false)
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(true)
     const { getAuthData, saveAuthData, clearAuthData } = useAuthStorage()
 
     useEffect(() => {
-
         const getAuthSection = async () => {
-            const userId = getAuthData()
+            const { userId } = await getAuthData()
 
             if (userId === null) {
                 setIsAuth(false)
@@ -24,22 +23,24 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ children }) =
             }
 
             setIsAuth(true)
+            setId(userId)
             setIsLoading(false)
         }
 
         getAuthSection()
 
-    }, [getAuthData, saveAuthData])
+    }, [getAuthData, saveAuthData, id, isAuth])
 
-    const setAuth = (id: string) => {
+    const setAuth = async (id: string) => {
         setIsAuth(true)
-        saveAuthData(id)
+        await saveAuthData(id)
         setId(id)
     }
 
-    const logout = () => {
+    const logout = async () => {
         setIsAuth(false)
-        clearAuthData()
+        setId('')
+        await clearAuthData()
     }
 
     return (
