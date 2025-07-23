@@ -22,15 +22,14 @@ export const authenticateUser = async ( userData : LoginSchemaType) => {
 
 export const registerUser = async ( userData : RegisterUserType ) => {
     try {
-        const { data , status } = await NoteSyncApi.post('/register' , userData)
+        const { data , status} = await NoteSyncApi.post('/register' , userData)
 
-        if(status === 200){
+        if(status >= 200 || status < 300){
             return data as AuthPromise
         }
 
         return null
     } catch (error) {
         console.log(`Erro no registro de usuário : ${error}`)
-        return null
     }
 }

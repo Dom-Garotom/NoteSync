@@ -4,5 +4,5 @@ export type DefaultResponse = {
 
 export type AuthPromise = {
     message : string ,
-    id : string
+    userId : string
 }

@@ -5,14 +5,14 @@ interface AuthContextInterface {
     isAuth : boolean
     isLoading : boolean
     setAuth : ( id : string ) => void
-    setLogout : () => void
+    logout : () => void
 }
 
 const AuthContextDefaultValue : AuthContextInterface = {
     id: '',
     isAuth: false ,
     isLoading: true,
-    setLogout: () => '',
+    logout: () => '',
     setAuth : () => ''
 }
 

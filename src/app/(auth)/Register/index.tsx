@@ -25,8 +25,8 @@ const Register: React.FC = () => {
             const response = await registerUser(fieldValues)
             const registerResponse = response ? response : null
 
-            if (registerResponse?.id) {
-                setAuth(registerResponse.id)
+            if (registerResponse?.userId) {
+                setAuth(registerResponse.userId)
                 navigate('/(notes)/Home')
                 return
             }

@@ -29,7 +29,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ children }) =
 
         getAuthSection()
 
-    }, [getAuthData , saveAuthData])
+    }, [getAuthData, saveAuthData])
 
     const setAuth = (id: string) => {
         setIsAuth(true)
@@ -37,7 +37,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ children }) =
         setId(id)
     }
 
-    const setLogout = () => {
+    const logout = () => {
         setIsAuth(false)
         clearAuthData()
     }
@@ -48,7 +48,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ children }) =
             isAuth,
             isLoading,
             setAuth,
-            setLogout,
+            logout,
         }}>
             {children}
         </AuthContext.Provider>
