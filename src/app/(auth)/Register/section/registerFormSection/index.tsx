@@ -2,6 +2,8 @@ import SectionTitle from '@/src/components/atoms/SectionTitle'
 import TextField from '@/src/components/atoms/TextField'
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
+import StyledRegisterFormSection from './style'
+import { Text, View } from 'react-native'
 
 
 const RegisterFormSection: React.FC = () => {
@@ -10,7 +12,14 @@ const RegisterFormSection: React.FC = () => {
 
     return (
         <>
-            <SectionTitle text='Criar conta' />
+            <View>
+                <SectionTitle text='Criar conta' />
+
+                <Text style={StyledRegisterFormSection.text}>
+                    Ainda não tem uma conta? Cadastre-se
+                    gratuitamente para começar a usar todos os recursos disponíveis.
+                </Text>
+            </View>
 
             <TextField
                 label='Nome'

@@ -49,8 +49,8 @@ const Login: React.FC = () => {
 
       <Image
         source={require('../../../assets/images/auth/login-image.png')}
-        width={300}
-        height={230}
+        width={272}
+        height={272}
       />
 
       <View style={{ width: '100%', gap: 19 }}>

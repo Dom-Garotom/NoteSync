@@ -17,6 +17,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
         <ScrollView
             scrollEnabled={true}
             style={{ flex: 1 }}
+            showsVerticalScrollIndicator={false}
             {...pageTemplateAttributes}
         >
             <View

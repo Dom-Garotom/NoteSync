@@ -5,7 +5,7 @@ import { Image, Text, View, StyleSheet, TouchableOpacity, Alert } from 'react-na
 import { RegisterUserSchema, RegisterUserType } from '@/src/types/schema/registerSchema'
 import { registerUser } from '@/src/services/models/userAuth'
 
-import { ArrowLeftFromLine } from 'lucide-react-native'
+import { MoveLeftIcon } from 'lucide-react-native'
 import ButtonNotes from '@/src/components/atoms/ButtonNotes'
 import PageTemplate from '@/src/components/template/PageTemplate'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -41,19 +41,17 @@ const Register: React.FC = () => {
     }
 
     return (
-        <PageTemplate
-            style={{ gap: 48 }}
-        >
+        <PageTemplate>
 
             <TouchableOpacity style={s.arrowLeft} onPress={() => back()}>
-                <ArrowLeftFromLine color={'#000'} size={22} />
+                <MoveLeftIcon color={'#000'} size={22} />
             </TouchableOpacity>
 
 
             <Image
-                source={require('../../../assets/login-cover2.png')}
-                width={300}
-                height={230}
+                source={require('../../../assets/images/auth/signIn-image.png')}
+                width={272}
+                height={272}
             />
 
             <View style={s.wrapper}>
@@ -68,7 +66,7 @@ const Register: React.FC = () => {
             </View>
 
 
-            <Text>
+            <Text style={s.bottomText}>
                 Já tem uma conta cadastrada ?{" "}
                 <Link
                     href={'/(auth)/Login'}
@@ -90,14 +88,15 @@ const s = StyleSheet.create({
         gap: 19,
     },
 
+    bottomText: {
+        width: 220,
+        textAlign: 'center',
+    },
+
     arrowLeft: {
         position: 'absolute',
-        left: 20,
-        top: 20,
+        left: 15,
+        top: 30,
         padding: 10,
-        borderColor: '#D1D1D1',
-        borderWidth: 2,
-        borderStyle: 'solid',
-        borderRadius: 8,
     },
 })

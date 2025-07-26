@@ -5,7 +5,6 @@ const StyledPageTemplate = StyleSheet.create({
     page: {
         flex: 1,
         padding: 25,
-        paddingTop: 50,
         gap: 33,
         alignItems: 'center',
         backgroundColor: themeColors.background.base,
