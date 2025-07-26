@@ -1,11 +1,10 @@
 import React, { ReactNode } from 'react'
-import { StyleProp, ViewStyle } from 'react-native'
-import { SafeAreaView, SafeAreaViewProps } from 'react-native-safe-area-context'
+import { ScrollView, ScrollViewProps, StyleProp, View, ViewStyle } from 'react-native'
 import { StyledPageTemplate } from './style'
 
 interface PageTemplateProps {
     children: ReactNode,
-    pageTemplateAttributes?: Omit<SafeAreaViewProps, "style">
+    pageTemplateAttributes?: Omit<ScrollViewProps, "style">
     style?: StyleProp<ViewStyle>
 }
 
@@ -15,12 +14,17 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
     style
 }) => {
     return (
-        <SafeAreaView
-            style={[StyledPageTemplate.page, style]}
+        <ScrollView
+            scrollEnabled={true}
+            style={{ flex: 1 }}
             {...pageTemplateAttributes}
         >
-            {children}
-        </SafeAreaView>
+            <View
+                style={[StyledPageTemplate.page, style]}
+            >
+                {children}
+            </View>
+        </ScrollView>
     )
 }
 

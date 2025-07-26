@@ -1,10 +1,10 @@
 import React from 'react'
-import { View } from 'react-native'
+import { Text, View } from 'react-native'
 import { useFormContext } from 'react-hook-form'
 
 import SectionTitle from '@/src/components/atoms/SectionTitle'
 import TextField from '@/src/components/atoms/TextField'
-import { StyledFormSection } from './style'
+import StyledFormSection from './style'
 
 
 const FormSection: React.FC = () => {
@@ -12,7 +12,14 @@ const FormSection: React.FC = () => {
     const { errors } = formState
     return (
         <View style={StyledFormSection.Wrapper}>
-            <SectionTitle text='login' />
+            <View>
+                <SectionTitle text='login' />
+
+                <Text style={StyledFormSection.text}>
+                    Acesse sua conta para continuar aproveitando todos os recursos.
+                    Basta inserir seu endereço de e-mail e senha cadastrados.
+                </Text>
+            </View>
 
             <TextField
                 label='Email'

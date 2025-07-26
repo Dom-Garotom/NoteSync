@@ -1,3 +1,4 @@
+import { themeColors } from "@/src/styles/colors";
 import { StyleSheet } from "react-native";
 
 export const StyledTextField = StyleSheet.create({
@@ -15,7 +16,7 @@ export const StyledTextField = StyleSheet.create({
     top: -10,
     left: 20,
     paddingHorizontal: 5,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: themeColors.background.base,
 
     fontSize: 12,
     fontWeight: '500',

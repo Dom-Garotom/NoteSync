@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { themeColors } from "@/src/styles/colors";
 
 export const s = StyleSheet.create({
     Wrapper: {
@@ -9,7 +10,7 @@ export const s = StyleSheet.create({
         borderRadius: 6,
         gap: 10,
         padding: 12,
-        backgroundColor: '#7655B9',
+        backgroundColor: themeColors.accent.primary,
     },
 
     Text: {

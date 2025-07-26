@@ -11,7 +11,7 @@ import { LoginSchema, LoginSchemaType } from '@/src/types/schema/loginSchema'
 import { authenticateUser } from '@/src/services/models/userAuth'
 import { AuthContext } from '@/src/context/model/authContextModel'
 import FormSection from './section/formSection'
-
+import { themeColors } from '@/src/styles/colors'
 
 
 const Login: React.FC = () => {
@@ -20,6 +20,7 @@ const Login: React.FC = () => {
   const methods = useForm({
     resolver: zodResolver(LoginSchema)
   })
+
 
   const onSubmit = async (fieldValues: LoginSchemaType) => {
     try {
@@ -44,38 +45,39 @@ const Login: React.FC = () => {
 
   return (
     <PageTemplate
-      style={{ gap: 48 }}
     >
 
       <Image
-        source={require('../../../assets/login-cover.png')}
+        source={require('../../../assets/images/auth/login-image.png')}
         width={300}
         height={230}
       />
 
-      <FormProvider {...methods}>
-        <FormSection />
-      </FormProvider>
+      <View style={{ width: '100%', gap: 19 }}>
+        <FormProvider {...methods}>
+          <FormSection />
+        </FormProvider>
 
-      <ButtonNotes
-        text='Logar na sua conta'
-        onPress={methods.handleSubmit(onSubmit)}
-      />
+        <ButtonNotes
+          text='Login'
+          onPress={methods.handleSubmit(onSubmit)}
+        />
+      </View>
 
-      <View style={{ gap: 20, alignItems: 'center' }}>
+      <View style={{ gap: 20, marginTop: 30, alignItems: 'center' }}>
         <Text>
           Não tem uma conta? {" "}
           <Link
             href={'/(auth)/Register'}
-            style={{ color: '#835ED6', fontWeight: '500' }}
+            style={{ color: `${themeColors.accent.links}`, fontWeight: '500' }}
           >
             Faça o seu cadastro.
           </Link>
         </Text>
 
         <Link
-          href={'/(auth)/RessetPassword'}
-          style={{ color: '#835ED6', fontWeight: '500' }}
+          href={'/(auth)/ResetPassword'}
+          style={{ color: `${themeColors.accent.links}`, fontWeight: '500' }}
         >
           Esqueceu a senha ?
         </Link>
