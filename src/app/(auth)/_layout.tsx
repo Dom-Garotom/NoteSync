@@ -11,16 +11,17 @@ const AuthRoot: React.FC = () => {
     }
 
     return (
-            <Stack
-                screenOptions={{
-                    headerShown: false
-                }}
-            >
-                <Stack.Screen name='Login/index' />
-                <Stack.Screen name='Register/index' />
-                <Stack.Screen name='ConfirmCode/index' />
-                <Stack.Screen name='ResetPassword/index' />
-            </Stack>
+        <Stack
+            screenOptions={{
+                headerShown: false
+            }}
+        >
+            <Stack.Screen name='Login/index' />
+            <Stack.Screen name='Register/index' />
+            <Stack.Screen name='ForgotPassword/index' />
+            <Stack.Screen name='ConfirmCode/index' />
+            <Stack.Screen name='ResetPassword/index' />
+        </Stack>
     )
 }
 
