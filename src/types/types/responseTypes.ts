@@ -1,8 +1,8 @@
 export type DefaultResponse = {
-    message : string
-}
+	message: string;
+};
 
 export type AuthPromise = {
-    message : string ,
-    userId : string
-}
+	message: string;
+	userId: string;
+};

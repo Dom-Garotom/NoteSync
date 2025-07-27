@@ -6,9 +6,7 @@
     "useIgnoreFile": false
   },
   "files": {
-    "includes": [
-      "src/**/*.ts"
-    ],
+    "includes": ["src/**/*.ts"],
     "ignoreUnknown": false
   },
   "linter": {
@@ -38,7 +36,8 @@
       "jsxQuoteStyle": "double",
       "quoteProperties": "asNeeded",
       "semicolons": "always",
-      "trailingCommas": "all"
+      "trailingCommas": "all",
+      "expand": "auto"
     }
   },
   "json": {
@@ -54,7 +53,5 @@
       }
     }
   },
-  "extends": [
-    "ultracite"
-  ]
+  "extends": ["ultracite"]
 }

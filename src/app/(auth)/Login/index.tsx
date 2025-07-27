@@ -76,7 +76,7 @@ const Login: React.FC = () => {
         </Text>
 
         <Link
-          href={'/(auth)/ResetPassword'}
+          href={'/(auth)/ForgotPassword'}
           style={{ color: `${themeColors.accent.links}`, fontWeight: '500' }}
         >
           Esqueceu a senha ?

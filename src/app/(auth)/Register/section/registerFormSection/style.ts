@@ -1,11 +1,11 @@
-import { StyleSheet } from "react-native";
-import { themeColors } from "@/src/styles/colors";
+import { StyleSheet } from 'react-native';
+import { themeColors } from '@/src/styles/colors';
 
- const StyledRegisterFormSection = StyleSheet.create({
-    text: {
-        fontSize:14,
-        color:themeColors.text.subTitle        
-    },
-})
+const StyledRegisterFormSection = StyleSheet.create({
+	text: {
+		fontSize: 14,
+		color: themeColors.text.subTitle,
+	},
+});
 
-export  default StyledRegisterFormSection
+export default StyledRegisterFormSection;
