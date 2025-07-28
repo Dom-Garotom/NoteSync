@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { themeColors } from '@/src/styles/colors';
 
 const StyledPageTemplate = StyleSheet.create({
 	page: {
@@ -7,7 +6,6 @@ const StyledPageTemplate = StyleSheet.create({
 		padding: 25,
 		gap: 33,
 		alignItems: 'center',
-		backgroundColor: themeColors.background.base,
 	},
 });
 

@@ -1,6 +1,10 @@
 import type { ForgotPasswordType } from '@/src/types/schema/forgotPassowrdSchema';
 import type { LoginSchemaType } from '@/src/types/schema/loginSchema';
 import type { RegisterUserType } from '@/src/types/schema/registerSchema';
+import type {
+	ConfirmationCodeResponse,
+	ConfirmationCodeType,
+} from '@/src/types/types/confirmationCode';
 import type { AuthPromise } from '@/src/types/types/responseTypes';
 import { NoteSyncApi } from '../api/config';
 
@@ -53,6 +57,27 @@ export const sendRecoveryEmail = async (userData: ForgotPasswordType) => {
 		return null;
 	} catch (error) {
 		console.log('Não foi possível enviar o email de recuperação. \nError : ');
+		console.log(error);
+		return null;
+	}
+};
+
+export const validateConfirmationCode = async (
+	userData: ConfirmationCodeType,
+) => {
+	try {
+		const { data, status } = await NoteSyncApi.post(
+			'/reset/validateCode',
+			userData,
+		);
+
+		if (status >= 200 || status < 300) {
+			return data as ConfirmationCodeResponse;
+		}
+
+		return null;
+	} catch (error) {
+		console.log('O código de validação é inválido. \nError : ');
 		console.log(error);
 		return null;
 	}

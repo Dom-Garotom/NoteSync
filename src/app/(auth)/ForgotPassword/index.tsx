@@ -4,7 +4,7 @@ import TextField from '@/src/components/atoms/TextField'
 import PageTemplate from '@/src/components/template/PageTemplate'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Image, Text, TouchableOpacity, View } from 'react-native'
 import { StyledForgotPassword } from './style'
 import { MoveLeftIcon } from 'lucide-react-native'
 import { useRouter } from 'expo-router'
@@ -25,8 +25,7 @@ const ForgotPassword: React.FC = () => {
             return
         }
 
-        alert(confirmMessage.message)
-        push('/ConfirmCode')
+        push(`/(auth)/ConfirmCode/${recoveryEmail.recoveryEmail}`)
     }
 
     return (
