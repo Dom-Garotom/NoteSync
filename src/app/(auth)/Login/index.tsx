@@ -83,13 +83,6 @@ const Login: React.FC = () => {
         </Link>
       </View>
 
-      <Link
-        href={'/(auth)/ConfirmCode'}
-        style={{ color: `${themeColors.accent.links}`, fontWeight: '500' }}
-      >
-        Next stage
-      </Link>
-
     </PageTemplate>
   )
 }

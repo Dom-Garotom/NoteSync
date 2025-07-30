@@ -5,7 +5,10 @@ import type {
 	ConfirmationCodeResponse,
 	ConfirmationCodeType,
 } from '@/src/types/types/confirmationCode';
-import type { AuthPromise } from '@/src/types/types/responseTypes';
+import type {
+	AuthPromise,
+	DefaultResponse,
+} from '@/src/types/types/responseTypes';
 import { NoteSyncApi } from '../api/config';
 
 export const authenticateUser = async (
@@ -78,6 +81,25 @@ export const validateConfirmationCode = async (
 		return null;
 	} catch (error) {
 		console.log('O código de validação é inválido. \nError : ');
+		console.log(error);
+		return null;
+	}
+};
+
+export const sendResetPassword = async (userData: ResetPasswordPayloadType) => {
+	try {
+		const { data, status } = await NoteSyncApi.post(
+			'/reset/resetPassword',
+			userData,
+		);
+
+		if (status >= 200 || status < 300) {
+			return data as DefaultResponse;
+		}
+
+		return null;
+	} catch (error) {
+		console.log('Não foi possível atualizar a sua senha. \nError : ');
 		console.log(error);
 		return null;
 	}
