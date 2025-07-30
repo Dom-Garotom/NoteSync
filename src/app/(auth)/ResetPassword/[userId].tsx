@@ -37,7 +37,7 @@ const ResetPassword: React.FC = () => {
         }
         
         Alert.alert(response.message)
-        navigate('/(notes)/Home')
+        navigate('/(core)/Home')
     }
 
 

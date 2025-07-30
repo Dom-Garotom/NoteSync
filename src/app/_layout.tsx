@@ -11,6 +11,7 @@ const RootLayout: React.FC = () => {
                 }}
             >
                 <Stack.Screen name='(auth)' />
+                <Stack.Screen name='(core)' />
                 <Stack.Screen name='(notes)' />
             </Stack>
         </AuthContextProvider>

@@ -16,7 +16,6 @@ const NotesRoot: React.FC = () => {
                     headerShown: false
                 }}
             >
-                <Stack.Screen name='Home/index' />
             </Stack>
     )
 }

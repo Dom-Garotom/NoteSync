@@ -29,7 +29,7 @@ const Login: React.FC = () => {
 
       if (response) {
         setAuth(response.userId)
-        navigate('/(notes)/Home')
+        navigate('/(core)/Home')
         return
       }
 

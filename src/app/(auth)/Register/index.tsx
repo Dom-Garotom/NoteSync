@@ -27,7 +27,7 @@ const Register: React.FC = () => {
 
             if (registerResponse?.userId) {
                 setAuth(registerResponse.userId)
-                navigate('/(notes)/Home')
+                navigate('/(core)/Home')
                 return
             }
 

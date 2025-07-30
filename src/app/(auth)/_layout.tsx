@@ -7,7 +7,7 @@ const AuthRoot: React.FC = () => {
     const { isAuth } = useContext(AuthContext)
 
     if (isAuth) {
-        return <Redirect href={'/(notes)/Home'} />
+        return <Redirect href={'/(core)/Home'} />
     }
 
     return (
