@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { ScrollView, ScrollViewProps, StyleProp, View, ViewStyle } from 'react-native'
+import { KeyboardAvoidingView, ScrollView, ScrollViewProps, StyleProp, View, ViewStyle } from 'react-native'
 import { StyledPageTemplate } from './style'
 import { themeColors } from '@/src/styles/colors'
 
@@ -15,21 +15,24 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
     style
 }) => {
     return (
-        <ScrollView
-            scrollEnabled={true}
-            style={{ 
-                flex: 1 ,
-                backgroundColor: themeColors.background.base,
-            }}
-            showsVerticalScrollIndicator={false}
-            {...pageTemplateAttributes}
-        >
-            <View
-                style={[StyledPageTemplate.page, style]}
+        <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+            <ScrollView
+                style={{
+                    flex: 1,
+                    backgroundColor: themeColors.background.base,
+                }}
+                scrollEnabled={true}
+                showsVerticalScrollIndicator={false}
+                keyboardShouldPersistTaps="handled"
+                {...pageTemplateAttributes}
             >
-                {children}
-            </View>
-        </ScrollView>
+                <View
+                    style={[StyledPageTemplate.page, style]}
+                >
+                    {children}
+                </View>
+            </ScrollView>
+        </KeyboardAvoidingView>
     )
 }
 
