@@ -1,7 +1,7 @@
 import React from 'react'
 import { themeColors } from '@/src/styles/colors'
 import { MegaphoneOff } from 'lucide-react-native'
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { StyledNotificationItem } from './style'
 
 interface NotificationItemProps {
@@ -11,7 +11,11 @@ interface NotificationItemProps {
 
 const NotificationItem: React.FC<NotificationItemProps> = ({ title, date }) => {
     return (
-        <View style={StyledNotificationItem.container}>
+        <TouchableOpacity
+            onPress={() => ''}
+            activeOpacity={0.8}
+            style={StyledNotificationItem.container}
+        >
             <View style={StyledNotificationItem.notificationIcon}>
                 <MegaphoneOff color={themeColors.background.base} size={20} />
             </View>
@@ -21,7 +25,7 @@ const NotificationItem: React.FC<NotificationItemProps> = ({ title, date }) => {
                     {date}
                 </Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

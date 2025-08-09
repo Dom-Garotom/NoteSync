@@ -1,29 +1,36 @@
 import { StyleSheet } from 'react-native';
 import { themeColors } from '@/src/styles/colors';
 
-export const StyledNotificationItem = StyleSheet.create({
-	container: {
-		flexDirection: 'row',
+export const StyledNotification = StyleSheet.create({
+	headerContainer: {
 		width: '100%',
-		gap: 12,
+		paddingTop: 10,
 	},
 
 	title: {
-		width: '63%',
-		fontSize: 14,
+		fontSize: 24,
+		fontWeight: '600',
 		color: themeColors.text.title,
 	},
 
 	subTitle: {
-		fontSize: 12,
+		fontSize: 16,
+		fontWeight: '400',
 		color: themeColors.text.subTitle,
+	},
+
+	fallbackContainer: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		textAlign: 'center',
+		marginTop: 140,
 	},
 
 	notificationIcon: {
 		alignItems: 'center',
 		justifyContent: 'center',
-		width: 40,
-		height: 40,
+		width: 60,
+		height: 60,
 		marginBottom: 12,
 		borderRadius: '100%',
 		backgroundColor: themeColors.accent.icons,
