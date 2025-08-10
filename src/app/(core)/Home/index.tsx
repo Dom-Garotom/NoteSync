@@ -1,9 +1,11 @@
-import React, { ReactNode,  useState } from 'react'
-import { Image, Text,  View } from 'react-native'
+import React, { ReactNode, useState } from 'react'
+import { Image, Text, View } from 'react-native'
 
 import PageTemplate from '@/src/components/template/PageTemplate'
 import SectionSwitch from '@/src/components/molecules/SectionSwap'
 import WorkSpace from './sections/workSpace'
+import Recent from './sections/Recent'
+import Favorites from './sections/Favorites'
 import { StyledHome } from './style'
 
 
@@ -18,9 +20,9 @@ const Home: React.FC = () => {
     const [currentSection, setCurrentSection] = useState<keyof SectionType>('workspace')
 
     const sections = {
-        workspace: <WorkSpace text='worksspace' />,
-        favorites: <WorkSpace text='fovorites' />,
-        recent: <WorkSpace text='recent' />
+        workspace: <WorkSpace />,
+        favorites: <Favorites text='fovorites' />,
+        recent: <Recent text='recent' />
     }
 
     return (
