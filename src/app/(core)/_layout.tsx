@@ -1,8 +1,9 @@
 import { AuthContext } from '@/src/context/model/authContextModel'
 import { themeColors } from '@/src/styles/colors'
 import { Redirect, Tabs } from 'expo-router'
-import { Bell, LucideHome, SearchIcon, UploadCloud } from 'lucide-react-native'
+import { Bell, CirclePlusIcon, CreativeCommonsIcon, LucideHome, SearchIcon, UploadCloud } from 'lucide-react-native'
 import React, { useContext } from 'react'
+import { TouchableOpacity } from 'react-native'
 
 
 const CoreRoot: React.FC = () => {
@@ -19,6 +20,7 @@ const CoreRoot: React.FC = () => {
                 tabBarActiveTintColor: themeColors.accent.primary,
                 tabBarInactiveTintColor: "#484C52",
                 animation: 'fade',
+                lazy: true,
             }}
 
         >
@@ -29,6 +31,14 @@ const CoreRoot: React.FC = () => {
                     tabBarIcon: ({ focused }) => <LucideHome color={focused ? themeColors.accent.primary : "#484C52"} />,
                 }}
             />
+
+            <Tabs.Screen
+                name="Home/sections"
+                options={{
+                    href: null,
+                }}
+            />
+
             <Tabs.Screen
                 name='Search/index'
                 options={{
@@ -36,13 +46,26 @@ const CoreRoot: React.FC = () => {
                     tabBarIcon: ({ focused }) => <SearchIcon color={focused ? themeColors.accent.primary : "#484C52"} />,
                 }}
             />
+
             <Tabs.Screen
                 name='Create/index'
                 options={{
                     title: 'Adicionar',
-                    tabBarIcon: ({ focused }) => <LucideHome color={focused ? themeColors.accent.primary : "#484C52"} />,
+                    tabBarIcon: ({ focused }) => <CirclePlusIcon color={focused ? themeColors.accent.primary : "#484C52"} />,
+                    tabBarButton: ({ children, style }) => (
+                        <TouchableOpacity
+                            style={style}
+                            onPress={(e) => {
+                                e.preventDefault()
+                                console.log("Abrir modal");
+                            }}
+                        >
+                            {children}
+                        </TouchableOpacity>
+                    ),
                 }}
             />
+
             <Tabs.Screen
                 name='Upload/index'
                 options={{
@@ -50,6 +73,7 @@ const CoreRoot: React.FC = () => {
                     tabBarIcon: ({ focused }) => <UploadCloud color={focused ? themeColors.accent.primary : "#484C52"} />,
                 }}
             />
+
             <Tabs.Screen
                 name='Notifications/index'
                 options={{
