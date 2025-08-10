@@ -21,7 +21,7 @@ const Home: React.FC = () => {
 
     const sections = {
         workspace: <WorkSpace />,
-        favorites: <Favorites text='fovorites' />,
+        favorites: <Favorites />,
         recent: <Recent text='recent' />
     }
 

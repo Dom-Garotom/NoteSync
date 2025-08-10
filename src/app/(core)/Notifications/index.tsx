@@ -3,7 +3,7 @@ import PageTemplate from '@/src/components/template/PageTemplate'
 import { themeColors } from '@/src/styles/colors'
 import { MegaphoneOff } from 'lucide-react-native'
 import React from 'react'
-import {  Text, View } from 'react-native'
+import { FlatList, Text, View } from 'react-native'
 import { StyledNotification } from './style'
 
 
@@ -74,13 +74,18 @@ const Notifications: React.FC = () => {
                     </View>
                 ) :
                 (
-                    notifications.map((item, index) => (
-                        <NotificationItem
-                            key={index}
-                            title={item.title}
-                            date={item.data}
-                        />
-                    ))
+                    <FlatList
+                        data={notifications}
+                        renderItem={({ item, index }) => (
+                            <NotificationItem
+                                key={index}
+                                title={item.title}
+                                date={item.data}
+                            />
+                        )}
+                        scrollEnabled={false}
+                        contentContainerStyle={{gap: 20}}
+                    />
                 )
             }
         </PageTemplate>
