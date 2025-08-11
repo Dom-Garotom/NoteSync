@@ -1,10 +1,11 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { mockNotes } from '@/src/db/mocks/notes'
 
 import ModifiedTimeCategory from '@/src/components/molecules/ModifiedCategory'
+import { useNotes } from '@/src/hooks/useNotes'
 
 const Recent: React.FC = () => {
+  const { notes  } = useNotes()
   const modifiedCategory = [
     'Hoje',
     'Ontem',
@@ -17,12 +18,13 @@ const Recent: React.FC = () => {
     <View style={StyledRecentPage.page}>
       {
         modifiedCategory.map((item, index) => {
-          const notes = mockNotes.filter(note => note.modifiedCategory === item)
+          const filteredNotes = notes.filter(note => note.modifiedCategory === item)
+
 
           return (
             <ModifiedTimeCategory
               categoryName={item}
-              notes={notes}
+              notes={filteredNotes}
               key={index}
             />
           )
@@ -38,6 +40,6 @@ export default Recent
 
 const StyledRecentPage = StyleSheet.create({
   page: {
-    marginBottom: 120
+    paddingBottom: 120,
   },
 })
