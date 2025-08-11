@@ -1,10 +1,11 @@
 import React from 'react'
-import { FlatList, Text, View } from 'react-native'
+import { FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { Notes } from '@/src/types/types/notes'
 
 import { formatMonth } from '@/src/utils/formatMonth'
 import { FileTextIcon } from 'lucide-react-native'
 import { StyledModifiedTimeCategory } from './style'
+import { useRouter } from 'expo-router'
 
 interface ModifiedTimeCategoryProps {
     notes: Notes[],
@@ -12,6 +13,8 @@ interface ModifiedTimeCategoryProps {
 }
 
 const ModifiedTimeCategory: React.FC<ModifiedTimeCategoryProps> = ({ notes, categoryName }) => {
+    const { push } = useRouter()
+
     return (
         <FlatList
             data={notes}
@@ -22,7 +25,9 @@ const ModifiedTimeCategory: React.FC<ModifiedTimeCategoryProps> = ({ notes, cate
             )}
 
             renderItem={({ item }) => (
-                <View>
+                <TouchableOpacity
+                    onPress={() => push(`(notes)/file/${item.id}`)}
+                >
                     <View style={StyledModifiedTimeCategory.noteItemHeader} >
                         <FileTextIcon size={18} />
                         <Text>{item.name}</Text>
@@ -42,7 +47,7 @@ const ModifiedTimeCategory: React.FC<ModifiedTimeCategoryProps> = ({ notes, cate
                             }
                         </Text>
                     </View>
-                </View>
+                </TouchableOpacity>
             )}
             scrollEnabled={false}
         />

@@ -5,6 +5,7 @@ import { Notes } from '@/src/types/types/notes'
 import { ChevronDown, ChevronRight, FileTextIcon, Plus } from 'lucide-react-native'
 import { themeColors } from '@/src/styles/colors'
 import { StyledCategory } from './style'
+import { useRouter } from 'expo-router'
 
 
 interface CategoryProps {
@@ -16,6 +17,7 @@ interface CategoryProps {
 
 const CategoryNote: React.FC<CategoryProps> = ({ categoryName, notes, createCategoryOption, initOpen = false }) => {
     const [expanded, setExpanded] = useState(initOpen)
+    const { push } = useRouter()
 
     return (
         <View style={{ width: '110%' }}>
@@ -38,13 +40,14 @@ const CategoryNote: React.FC<CategoryProps> = ({ categoryName, notes, createCate
             {expanded && (
                 <View style={StyledCategory.notesContainer}>
                     {notes.map((note, index) => (
-                        <View
+                        <TouchableOpacity
                             key={index}
                             style={StyledCategory.noteItem}
+                            onPress={() => push(`(notes)/file/${note.id}`)}
                         >
                             <FileTextIcon size={18} />
                             <Text style={{ fontSize: 14 }}>{note.name}</Text>
-                        </View>
+                        </TouchableOpacity>
                     ))}
                 </View>
             )}

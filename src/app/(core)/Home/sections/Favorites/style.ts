@@ -4,7 +4,7 @@ import { themeColors } from '@/src/styles/colors';
 export const StyledFavorite = StyleSheet.create({
 	notesContainer: {
 		gap: 20,
-		alignItems: 'flex-start'
+		alignItems: 'flex-start',
 	},
 
 	noteItem: {
