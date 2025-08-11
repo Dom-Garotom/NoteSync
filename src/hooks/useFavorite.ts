@@ -33,12 +33,11 @@ export const useFavorites = () => {
 		loadFavorite();
 	}, [db]);
 
-		// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
-		if(favorites.length === 0 ){
+		if (favorites.length === 0) {
 			loadFavorite();
 		}
-
 	}, [db, favorites]);
 
 	return {

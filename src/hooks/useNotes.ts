@@ -40,12 +40,6 @@ export function useNotes() {
 	}, [db]);
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-	useEffect(() => {
-		if(notes.length === 0 ){
-			loadNotes();
-		}
-
-	}, [db, notes]);
 
 	return { notes, reload: loadNotes };
 }
