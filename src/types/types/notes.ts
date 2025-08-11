@@ -20,5 +20,24 @@ export interface Notes {
 	actionAt: Date;
 	action: ActionType;
 	modifiedCategory: ModifiedCategory;
-	category: CategoryType;
+	category: string;
+}
+
+export interface FolderType {
+	id: number;
+	name: string;
+}
+
+export interface FavoriteNote {
+	id: number;
+	name: string;
+}
+
+export interface SqlNote {
+	id: number;
+	name: string;
+	content: string;
+	actionAt: Date;
+	action: ActionType;
+	category: string;
 }

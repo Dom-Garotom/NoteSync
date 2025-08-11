@@ -1,19 +1,19 @@
 import React from 'react'
 import { Text, View, FlatList, TouchableOpacity } from 'react-native'
 
-import { mockFavorites } from '@/src/db/mocks/favorite'
 import { StarIcon } from 'lucide-react-native'
 import { StyledFavorite } from './style';
 import { useRouter } from 'expo-router';
+import { useFavorites } from '@/src/hooks/useFavorite';
 
 const Favorites: React.FC = () => {
+  const { favorites } = useFavorites()
   const { push } = useRouter()
-
 
   return (
     <View>
       <FlatList
-        data={mockFavorites}
+        data={favorites}
         keyExtractor={item => item.id.toString()}
         renderItem={
           ({ item }) => (
