@@ -19,10 +19,11 @@ interface SectionType {
 const Home: React.FC = () => {
     const [currentSection, setCurrentSection] = useState<keyof SectionType>('workspace')
 
+
     const sections = {
         workspace: <WorkSpace />,
         favorites: <Favorites />,
-        recent: <Recent text='recent' />
+        recent: <Recent />
     }
 
     return (
