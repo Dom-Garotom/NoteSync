@@ -1,5 +1,4 @@
 import React from 'react'
-import { mockNotes } from '@/src/db/mocks/notes'
 import CategoryNote from '@/src/components/atoms/CategoryNote'
 import { useFolders } from '@/src/hooks/useFolder'
 import { useNotes } from '@/src/hooks/useNotes'
