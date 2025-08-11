@@ -10,11 +10,12 @@ import { StyledCategory } from './style'
 interface CategoryProps {
     categoryName: string
     notes: Notes[],
-    createCategoryOption: boolean
+    createCategoryOption: boolean,
+    initOpen: boolean,
 }
 
-const Category: React.FC<CategoryProps> = ({ categoryName, notes, createCategoryOption }) => {
-    const [expanded, setExpanded] = useState(false)
+const CategoryNote: React.FC<CategoryProps> = ({ categoryName, notes, createCategoryOption, initOpen = false }) => {
+    const [expanded, setExpanded] = useState(initOpen)
 
     return (
         <View style={{ width: '110%' }}>
@@ -51,4 +52,4 @@ const Category: React.FC<CategoryProps> = ({ categoryName, notes, createCategory
     )
 }
 
-export default Category
+export default CategoryNote

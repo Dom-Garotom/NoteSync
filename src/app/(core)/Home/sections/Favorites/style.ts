@@ -1,32 +1,23 @@
-import { themeColors } from "@/src/styles/colors";
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
+import { themeColors } from '@/src/styles/colors';
 
 export const StyledFavorite = StyleSheet.create({
-  notesContainer: {
-    gap: 20,
-  },
+	notesContainer: {
+		gap: 20,
+		alignItems: 'flex-start'
+	},
 
-  noteItem: {
-    flexDirection: 'column',
-    gap: 4,
-    marginVertical: 3,
-  },
+	noteItem: {
+		width: '120%',
+		flexDirection: 'row',
+		gap: 6,
+		alignItems: 'center',
+	},
 
-  noteItemHeader: {
-    flexDirection: 'row',
-    gap: 6,
-  },
-
-  noteName: {
-    color: themeColors.text.title,
-    fontWeight: '500',
-    fontSize: 16,
-  },
-
-  noteContentText: {
-    color: themeColors.text.subTitle,
-    fontWeight: '400',
-    fontSize: 14,
-  },
-
+	noteName: {
+		width: '100%',
+		color: themeColors.text.title,
+		fontWeight: '500',
+		fontSize: 16,
+	},
 });

@@ -1,7 +1,7 @@
 import React from 'react'
 import { categories } from '@/src/db/mocks/category'
 import { mockNotes } from '@/src/db/mocks/notes'
-import Category from '@/src/components/atoms/Category'
+import CategoryNote from '@/src/components/atoms/CategoryNote'
 
 
 
@@ -14,10 +14,11 @@ const WorkSpace: React.FC = () => {
         Categories.map((item, index) => {
           const notes = mockNotes.filter(note => note.category === item)
           return (
-            <Category
+            <CategoryNote
               categoryName={item}
               notes={notes}
               createCategoryOption={index === 0 ? true : false}
+              initOpen={index === 0 ? true : false}
               key={index}
             />
           )

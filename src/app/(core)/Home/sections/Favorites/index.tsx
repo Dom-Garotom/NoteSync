@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, FlatList } from 'react-native'
 
 import { mockFavorites } from '@/src/db/mocks/favorite'
-import { FileTextIcon } from 'lucide-react-native'
+import { StarIcon } from 'lucide-react-native'
 import { StyledFavorite } from './style';
 
 const Favorites: React.FC = () => {
@@ -17,11 +17,8 @@ const Favorites: React.FC = () => {
               key={item.id}
               style={StyledFavorite.noteItem}
             >
-              <View style={StyledFavorite.noteItemHeader}>
-                <FileTextIcon size={18} />
-                <Text style={StyledFavorite.noteName}>{item.name}</Text>
-              </View>
-              <Text style={StyledFavorite.noteContentText}>{item.conteudo}</Text>
+              <StarIcon size={18} color={'#FFA508'} />
+              <Text style={StyledFavorite.noteName}>{item.name}</Text>
             </View>
           )
         }
