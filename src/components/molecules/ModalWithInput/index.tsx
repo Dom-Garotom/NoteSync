@@ -29,9 +29,7 @@ const ModalWithInput: React.FC<ModalWithInputProps> = ({
                 animationType="slide"
                 transparent={true}
                 visible={modalIsVisible}
-                onRequestClose={() => {
-                }}>
-
+            >
                 <View style={StyledModalWithInput.container}>
                     <View style={StyledModalWithInput.modalContainer}>
                         <View>

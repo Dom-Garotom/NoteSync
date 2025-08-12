@@ -38,13 +38,6 @@ export const useFolders = () => {
 		loadFolders();
 	}, [db]);
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-	useEffect(() => {
-		if (folders.length === 0) {
-			loadFolders();
-		}
-	}, [db, folders]);
-
 	return {
 		folders,
 		createFolder,

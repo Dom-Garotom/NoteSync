@@ -72,6 +72,16 @@ export const createTables = async (db: SQLiteDatabase) => {
             INSERT INTO favorites (noteId) VALUES (2);
         `);
 
+		await db.execAsync(`
+            CREATE TABLE IF NOT EXISTS audio (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              folderId INTEGER NOT NULL,
+              name  TEXT NOT NULL,
+              uri TEXT NOT NULL,
+              FOREIGN KEY (folderId) REFERENCES folders(id) ON DELETE CASCADE
+            );
+        `);
+
 		// biome-ignore lint/suspicious/noConsole: <explanation>
 		console.log('Tabelas criadas com sucesso');
 	} catch (error) {

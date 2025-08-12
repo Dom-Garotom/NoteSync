@@ -8,6 +8,7 @@ export const useAuthStorage = () => {
 		try {
 			await AsyncStorage.setItem(USER_ID_KEY, userId);
 		} catch (error) {
+			// biome-ignore lint/suspicious/noConsole: <explanation>
 			console.error('Erro ao salvar dados de autenticação:', error);
 		}
 	}, []);
@@ -17,6 +18,7 @@ export const useAuthStorage = () => {
 			const userId = await AsyncStorage.getItem(USER_ID_KEY);
 			return { userId };
 		} catch (error) {
+			// biome-ignore lint/suspicious/noConsole: <explanation>
 			console.error('Erro ao recuperar dados de autenticação:', error);
 			return { userId: null };
 		}
@@ -26,6 +28,7 @@ export const useAuthStorage = () => {
 		try {
 			await AsyncStorage.removeItem(USER_ID_KEY);
 		} catch (error) {
+			// biome-ignore lint/suspicious/noConsole: <explanation>
 			console.error('Erro ao limpar dados de autenticação:', error);
 		}
 	}, []);

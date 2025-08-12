@@ -1,13 +1,14 @@
 import { AuthContext } from '@/src/context/model/authContextModel'
 import { themeColors } from '@/src/styles/colors'
-import { Redirect, Tabs } from 'expo-router'
-import { Bell, CirclePlusIcon, CreativeCommonsIcon, LucideHome, SearchIcon, UploadCloud } from 'lucide-react-native'
+import { Redirect, Tabs, useRouter } from 'expo-router'
+import { Bell, CirclePlusIcon,  LucideHome, SearchIcon, UploadCloud } from 'lucide-react-native'
 import React, { useContext } from 'react'
 import { TouchableOpacity } from 'react-native'
 
 
 const CoreRoot: React.FC = () => {
     const { isAuth } = useContext(AuthContext)
+    const { navigate } = useRouter()
 
     if (!isAuth) {
         return <Redirect href={'/(auth)/Login'} />
@@ -58,6 +59,7 @@ const CoreRoot: React.FC = () => {
                             onPress={(e) => {
                                 e.preventDefault()
                                 console.log("Abrir modal");
+                                navigate('(modal)/CreateAudioNote')
                             }}
                         >
                             {children}

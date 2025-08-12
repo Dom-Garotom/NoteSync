@@ -16,6 +16,10 @@ const RootLayout: React.FC = () => {
                     <Stack.Screen name='(auth)' />
                     <Stack.Screen name='(core)' />
                     <Stack.Screen name='(notes)' />
+                    <Stack.Screen
+                        name="(modal)/CreateAudioNote"
+                        options={{ presentation: 'modal' }}
+                    />
                 </Stack>
                 <Toast />
             </AuthContextProvider>

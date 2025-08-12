@@ -9,22 +9,25 @@ import { useRouter } from 'expo-router'
 import { showToast } from '@/src/utils/showToast'
 import ModalWithInput from '../../molecules/ModalWithInput'
 import { useFolders } from '@/src/hooks/useFolder'
+import { AudioType } from '@/src/hooks/useAudio'
+import { AudioPLayer } from '../AudioPlayer'
 
 
 interface CategoryProps {
     categoryName: string
     notes: Notes[],
+    audio: AudioType[],
     createCategoryOption: boolean,
     initOpen: boolean,
 }
 
-const CategoryNote: React.FC<CategoryProps> = ({ categoryName, notes, createCategoryOption, initOpen = false }) => {
+const CategoryNote: React.FC<CategoryProps> = ({ categoryName, notes, createCategoryOption, initOpen = false, audio }) => {
     const [expanded, setExpanded] = useState(initOpen)
     const [modalVisible, setModalVisible] = useState(false);
-    const { createFolder  , reload } = useFolders()
+    const { createFolder, reload } = useFolders()
     const { push } = useRouter()
 
-    
+
 
     return (
         <View style={{ width: '110%' }}>
@@ -68,10 +71,16 @@ const CategoryNote: React.FC<CategoryProps> = ({ categoryName, notes, createCate
                             <Text style={{ fontSize: 14 }}>{note.name}</Text>
                         </TouchableOpacity>
                     ))}
+
+                    {audio.map((item) => (
+                        <AudioPLayer
+                            name={item.name}
+                            uri={item.uri}
+                            key={item.id}
+                        />
+                    ))}
                 </View>
             )}
-
-
 
             {/* Input de criar nota */}
             {createCategoryOption &&
@@ -80,7 +89,7 @@ const CategoryNote: React.FC<CategoryProps> = ({ categoryName, notes, createCate
                     subTitle='Defina um nome para a sua nova categoria da nota .'
                     modalIsVisible={modalVisible}
                     onCancel={setModalVisible}
-                    onConfirm={ (e) => {
+                    onConfirm={(e) => {
                         createFolder(e)
                         reload()
                         setModalVisible(false)
