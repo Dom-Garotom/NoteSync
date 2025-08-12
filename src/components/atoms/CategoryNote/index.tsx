@@ -11,6 +11,7 @@ import ModalWithInput from '../../molecules/ModalWithInput'
 import { useFolders } from '@/src/hooks/useFolder'
 import { AudioType } from '@/src/hooks/useAudio'
 import { AudioPLayer } from '../AudioPlayer'
+import { useFavorites } from '@/src/hooks/useFavorite'
 
 
 interface CategoryProps {
@@ -26,13 +27,19 @@ const CategoryNote: React.FC<CategoryProps> = ({ categoryName, notes, createCate
     const [modalVisible, setModalVisible] = useState(false);
     const { createFolder, reload } = useFolders()
     const { push } = useRouter()
+    const { createFavorite } =  useFavorites()
 
+
+    const addNoteToFavorite = async ( noteId : number ) => {
+        await createFavorite(noteId)
+        showToast('success' , 'Sua nota foi adicionada aos favoritos com sucesso')
+    }
 
 
     return (
         <View style={{ width: '110%' }}>
 
-            {/* Renderização das categorias */}
+
             <View style={StyledCategory.categoryButton}>
                 <TouchableOpacity
                     onPress={() => setExpanded(!expanded)}
@@ -57,7 +64,6 @@ const CategoryNote: React.FC<CategoryProps> = ({ categoryName, notes, createCate
             </View>
 
 
-            {/* Renderização das notas */}
 
             {expanded && (
                 <View style={StyledCategory.notesContainer}>
@@ -66,6 +72,7 @@ const CategoryNote: React.FC<CategoryProps> = ({ categoryName, notes, createCate
                             key={index}
                             style={StyledCategory.noteItem}
                             onPress={() => push(`(notes)/file/${note.id}`)}
+                            onLongPress={() => addNoteToFavorite(note.id)}
                         >
                             <FileTextIcon size={18} />
                             <Text style={{ fontSize: 14 }}>{note.name}</Text>
@@ -82,7 +89,7 @@ const CategoryNote: React.FC<CategoryProps> = ({ categoryName, notes, createCate
                 </View>
             )}
 
-            {/* Input de criar nota */}
+
             {createCategoryOption &&
                 <ModalWithInput
                     title='Criando uma nova categoria'

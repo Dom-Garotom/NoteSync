@@ -19,7 +19,7 @@ export const useFavorites = () => {
 		setFavorites(favoriteNotes as FavoriteNote[]);
 	};
 
-	const createFavorite = async (noteId: string) => {
+	const createFavorite = async (noteId: number) => {
 		if (!db) {
 			return;
 		}

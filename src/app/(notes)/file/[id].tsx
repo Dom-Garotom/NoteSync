@@ -1,6 +1,6 @@
 import PageTemplate from '@/src/components/template/PageTemplate';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { ArrowLeft, BookOpen, MoreVertical, Pencil } from 'lucide-react-native';
+import { ArrowLeft, BookOpen, Pencil } from 'lucide-react-native';
 import React, { useState, useEffect } from 'react';
 import { ImageBackground, Text, TouchableOpacity, View, TextInput } from 'react-native';
 import Markdown from 'react-native-markdown-display';
@@ -94,10 +94,6 @@ const File: React.FC = () => {
                     ) : (
                         <Pencil size={24} color={themeColors.accent.icons} />
                     )}
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => ''} style={styles.headerButton}>
-                    <MoreVertical size={24} color="#ffffff" />
                 </TouchableOpacity>
             </View>
         </>

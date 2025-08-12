@@ -84,10 +84,6 @@ const CreateFile: React.FC = () => {
                         <Pencil size={24} color={themeColors.accent.icons} />
                     )}
                 </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => ''} style={styles.headerButton}>
-                    <MoreVertical size={24} color="#ffffff" />
-                </TouchableOpacity>
             </View>
         </>
     );
