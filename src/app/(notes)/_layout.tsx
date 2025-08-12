@@ -11,12 +11,14 @@ const NotesRoot: React.FC = () => {
     }
 
     return (
-            <Stack
-                screenOptions={{
-                    headerShown: false
-                }}
-            >
-            </Stack>
+        <Stack
+            screenOptions={{
+                headerShown: false
+            }}
+        >
+            <Stack.Screen name='CreateFile' />
+            <Stack.Screen name='file' />
+        </Stack>
     )
 }
 
