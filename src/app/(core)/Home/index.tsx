@@ -9,7 +9,6 @@ import Favorites from './sections/Favorites'
 import { StyledHome } from './style'
 
 
-
 interface SectionType {
     workspace: ReactNode
     favorites: ReactNode
@@ -18,7 +17,6 @@ interface SectionType {
 
 const Home: React.FC = () => {
     const [currentSection, setCurrentSection] = useState<keyof SectionType>('workspace')
-
 
     const sections = {
         workspace: <WorkSpace />,
