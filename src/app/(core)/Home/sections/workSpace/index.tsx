@@ -10,7 +10,6 @@ const WorkSpace: React.FC = () => {
   const { folders } = useFolders()
   const { notes } = useNotes()
   const { audios } = useAudio()
-  console.log(audios)
 
   return (
     <>

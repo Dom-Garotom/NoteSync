@@ -1,7 +1,6 @@
 import ModalWithInput from '@/src/components/molecules/ModalWithInput'
 import NoteRecordingModal from '@/src/components/molecules/NoteRecordingModal';
 import { useAudio } from '@/src/hooks/useAudio';
-import { useAudioRecorder } from '@/src/hooks/useAudioRecord';
 import { showToast } from '@/src/utils/showToast';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react'

@@ -34,6 +34,69 @@ export function useNotes() {
 		setNotes(fillNotes);
 	};
 
+	const createNote = async (
+		name: string,
+		content: string,
+		actionId: number,
+		folderId: number,
+	) => {
+		if (!db) {
+			return;
+		}
+
+		const now = new Date().toISOString();
+
+		await db.runAsync(
+			`
+			INSERT INTO notes (name, content, action_id, folder_id, action_at)
+			VALUES (?, ?, ?, ?, ?)
+			`,
+			[name, content, actionId, folderId, now],
+		);
+
+		await loadNotes();
+	};
+
+	const updateNote = async (
+		id: number,
+		name: string,
+		content: string,
+		actionId: number,
+	) => {
+		if (!db) {
+			return;
+		}
+
+		const now = new Date().toISOString();
+
+		await db.runAsync(
+			`
+			UPDATE notes
+			SET name = ?, content = ?, action_id = ?,  action_at = ?
+			WHERE id = ?
+			`,
+			[name, content, actionId, now, id],
+		);
+
+		await loadNotes();
+	};
+
+	const deleteNote = async (id: number) => {
+		if (!db) {
+			return;
+		}
+
+		await db.runAsync(
+			`
+			DELETE FROM notes
+			WHERE id = ?
+			`,
+			[id],
+		);
+
+		await loadNotes();
+	};
+
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		loadNotes();
@@ -41,5 +104,5 @@ export function useNotes() {
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 
-	return { notes, reload: loadNotes };
+	return { notes, createNote, updateNote, deleteNote, reload: loadNotes };
 }

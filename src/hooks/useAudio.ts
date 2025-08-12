@@ -19,9 +19,9 @@ export const useAudio = () => {
 			}
 
 			const data = await db.getAllAsync('SELECT * FROM audio ');
-			console.log(data);
 			setAudios(data as AudioType[]);
 		} catch (error) {
+			// biome-ignore lint/suspicious/noConsole: <explanation>
 			console.log(error);
 		}
 	};
