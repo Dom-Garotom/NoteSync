@@ -2,6 +2,6 @@
 import * as SQLite from 'expo-sqlite';
 
 export const openDatabase = async () => {
-	const db = await SQLite.openDatabaseAsync('notesS');
+	const db = await SQLite.openDatabaseAsync('notesSync');
 	return db;
 };

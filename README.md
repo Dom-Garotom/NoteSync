@@ -23,7 +23,7 @@ O design do **NoteSync** foi desenvolvido com uma abordagem mobile-first desde o
 
 Ao contrário de soluções como Notion e Obsidian  que foram originalmente pensadas para desktop e apenas adaptadas para smartphones, nosso projeto nasce com foco total no contexto de mobilidade. Cada detalhe da interface, fluxo e interação foi cuidadosamente planejado para atender as necessidades reais dos usuários que dependem do celular para capturar, organizar e acessar informações rapidamente.
 
-**Figma:** [Acessar Protótipo](https://www.figma.com/) 
+**Figma:** [Acessar Protótipo](https://www.figma.com/design/xY20c1nptHMdWWf0FLH4W6/NoteSync---project?node-id=3502-6553) 
 
 <br>
 <br>
@@ -60,7 +60,3 @@ Ao contrário de soluções como Notion e Obsidian  que foram originalmente pens
   <img src="docs/assets/mockup-2.png" width="400"/>
 </div>
 
-
-## 📦 Instalação Local
-
-### Em andamento 

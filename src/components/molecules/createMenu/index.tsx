@@ -24,7 +24,10 @@ const CreateMenuModal: React.FC<CreateMenuProps> = ({ modalIsVisible }) => {
                     <View style={StyledModalWithInput.modalContainer}>
                         <TouchableOpacity
                             style={StyledModalWithInput.cardContainer}
-                            onPress={() => navigate('(notes)/createFile')}
+                            onPress={() => {
+                                navigate('(notes)/createFile')
+                                setIsVisible(false)
+                            }}
                         >
                             <View style={[StyledModalWithInput.card, { backgroundColor: '#835ED6' }]}>
                                 <FolderPlus color={"#fff"} />
@@ -34,7 +37,10 @@ const CreateMenuModal: React.FC<CreateMenuProps> = ({ modalIsVisible }) => {
 
                         <TouchableOpacity
                             style={StyledModalWithInput.cardContainer}
-                            onPress={() => navigate('(modal)/CreateAudioNote')}
+                            onPress={() => {
+                                navigate('(modal)/CreateAudioNote')
+                                setIsVisible(false)
+                            }}
                         >
                             <View style={[StyledModalWithInput.card, { backgroundColor: '#E93147' }]}>
                                 <AudioLines color={"#fff"} />

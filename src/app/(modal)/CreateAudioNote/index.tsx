@@ -39,7 +39,7 @@ const AudioNote: React.FC = () => {
                     }
 
                     setModalVisible(false)
-                    createAudio(4, e, uri)
+                    createAudio(6, e, uri)
                     navigate('(core)/Home')
                     showToast('success', 'Sua nota de áudio foi salva com sucesso', 'Acesse agora sua nova nota de áudio na página home.')
                 }}
