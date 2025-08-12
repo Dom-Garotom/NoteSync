@@ -2,6 +2,7 @@ import { Stack } from 'expo-router'
 import React from 'react'
 import AuthContextProvider from '../context/provider/authContextProvider'
 import { DatabaseProvider } from '../context/provider/databaseProvider'
+import Toast from 'react-native-toast-message'
 
 const RootLayout: React.FC = () => {
     return (
@@ -16,6 +17,7 @@ const RootLayout: React.FC = () => {
                     <Stack.Screen name='(core)' />
                     <Stack.Screen name='(notes)' />
                 </Stack>
+                <Toast />
             </AuthContextProvider>
         </DatabaseProvider>
 

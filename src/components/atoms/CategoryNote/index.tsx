@@ -6,6 +6,7 @@ import { ChevronDown, ChevronRight, FileTextIcon, Plus } from 'lucide-react-nati
 import { themeColors } from '@/src/styles/colors'
 import { StyledCategory } from './style'
 import { useRouter } from 'expo-router'
+import { showToast } from '@/src/utils/showToast'
 
 
 interface CategoryProps {
@@ -21,21 +22,28 @@ const CategoryNote: React.FC<CategoryProps> = ({ categoryName, notes, createCate
 
     return (
         <View style={{ width: '110%' }}>
-            <TouchableOpacity
-                onPress={() => setExpanded(!expanded)}
-                style={StyledCategory.categoryButton}
-            >
+            <View style={StyledCategory.categoryButton}>
+                <TouchableOpacity
+                    onPress={() => setExpanded(!expanded)}
+                >
 
-                <View style={StyledCategory.categoryButtonContainer}>
-                    {expanded ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
+                    <View style={StyledCategory.categoryButtonContainer}>
+                        {expanded ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
 
-                    <Text style={StyledCategory.categoryName}>
-                        {categoryName}
-                    </Text>
-                </View>
+                        <Text style={StyledCategory.categoryName}>
+                            {categoryName}
+                        </Text>
+                    </View>
+                </TouchableOpacity>
 
-                {createCategoryOption && <Plus size={18} color={themeColors.text.contrast} />}
-            </TouchableOpacity>
+                {createCategoryOption &&
+                    <Plus
+                        size={18}
+                        color={themeColors.text.contrast}
+                        onPress={() => showToast('success' , 'Sua nova categoria foi criada com sucesso' , 'Acesse agora sua categoria e cria diversas notas.')}
+                    />
+                }
+            </View>
 
             {expanded && (
                 <View style={StyledCategory.notesContainer}>
