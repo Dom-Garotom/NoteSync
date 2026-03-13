@@ -1,0 +1,23 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "*.{js,jsx,ts,tsx,md,json,mjs,jsonc}"
+      run: npx @biomejs/biome lint --no-errors-on-unmatched {staged_files}
+      stage_fixed: true
+
+    format:
+      glob: "*.{js,jsx,ts,tsx,md,json,mjs,jsonc}"
+      run: npx @biomejs/biome format --write --no-errors-on-unmatched {staged_files}
+      stage_fixed: true
+
+pre-push:
+  # commands:
+  #   lint:
+  #     glob: "*.{js,jsx,ts,tsx,md,json,mjs,jsonc}"
+  #     run: npx @biomejs/biome lint --no-errors-on-unmatched .
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx commitlint --edit {1}

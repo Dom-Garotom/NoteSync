@@ -6,7 +6,18 @@
     "useIgnoreFile": false
   },
   "files": {
-    "includes": ["src/**/*.ts"],
+    "includes": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.md",
+      "**/*.json",
+      "**/*.jsonc",
+      "**/*.js",
+      "**/*.jsx",
+      "**/*.css",
+      "**/*.scss",
+      "**/*.less"
+    ],
     "ignoreUnknown": false
   },
   "linter": {
